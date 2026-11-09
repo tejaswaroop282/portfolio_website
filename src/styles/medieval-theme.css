@@ -1,0 +1,158 @@
+/* Medieval UI layer: parchment panels, stone borders, antique-gold accents. Technical text stays sans. */
+
+.stone-panel {
+  background: linear-gradient(180deg, rgba(28, 28, 32, 0.92), rgba(14, 14, 17, 0.94));
+  border: 1px solid rgba(201, 162, 74, 0.35);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.7), 0 18px 50px rgba(0, 0, 0, 0.55), inset 0 0 0 3px rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(6px);
+}
+
+.parchment {
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(255, 248, 220, 0.5), transparent 60%),
+    radial-gradient(ellipse at 90% 100%, rgba(120, 80, 30, 0.22), transparent 55%),
+    var(--color-parchment);
+  color: var(--color-parchment-ink);
+  border: 1px solid #8a6f3b;
+  box-shadow: 0 0 0 3px rgba(42, 33, 24, 0.9), 0 0 0 4px rgba(201, 162, 74, 0.7), 0 24px 70px rgba(0, 0, 0, 0.6);
+}
+
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  border: 0;
+  margin: 0;
+}
+
+.display {
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+}
+
+.btn-gold {
+  font-family: var(--font-display);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+  padding: 0.7rem 1.15rem;
+  color: #1a1408;
+  background: linear-gradient(180deg, #e0be6a, #b8923a);
+  border: 1px solid #f0d58f;
+  box-shadow: 0 2px 0 #6c5320, 0 8px 24px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.btn-gold:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+.btn-ghost {
+  font-family: var(--font-display);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+  padding: 0.7rem 1.15rem;
+  color: var(--color-bone);
+  background: rgba(10, 10, 12, 0.55);
+  border: 1px solid rgba(201, 162, 74, 0.55);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(4px);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.btn-ghost:hover {
+  background: rgba(201, 162, 74, 0.16);
+  border-color: var(--color-gold);
+}
+
+.chip {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.22rem 0.55rem;
+  border: 1px solid rgba(201, 162, 74, 0.4);
+  background: rgba(201, 162, 74, 0.08);
+  color: var(--color-bone);
+}
+.parchment .chip {
+  border-color: rgba(42, 33, 24, 0.45);
+  background: rgba(42, 33, 24, 0.07);
+  color: var(--color-parchment-ink);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.rise {
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.fadein {
+  animation: fadein 0.5s ease both;
+}
+
+.scroll-hint {
+  animation: bob 2s ease-in-out infinite;
+}
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #8f7433 transparent;
+}
+
+/* 3D object labels (drei <Html>) */
+.world-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 12px;
+  background: rgba(12, 12, 14, 0.82);
+  border: 1px solid rgba(201, 162, 74, 0.7);
+  white-space: nowrap;
+  transform: translateY(-4px);
+  animation: fadein 0.3s ease both;
+}
+.world-label-title {
+  font-family: var(--font-display);
+  letter-spacing: 0.08em;
+  font-size: 13px;
+  color: var(--color-gold);
+}
+.world-label-sub {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-stone);
+}
